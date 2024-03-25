@@ -1595,11 +1595,8 @@ auto diagram_manager<Data, Degree, Domain>::satisfy_all_impl(
     {
         int32 const index  = nodes_.get_index(level);
         int32 const domain = nodes_.get_domain(index);
-        for (auto k = 0; k < domain; ++k)
-        {
-            vars[as_uindex(index)] = k;
-            this->satisfy_all_impl(value, vars, out, node, level + 1);
-        }
+        vars[as_uindex(index)] = -1;
+        this->satisfy_all_impl(value, vars, out, node, level + 1);
     }
     else
     {
